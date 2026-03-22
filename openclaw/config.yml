@@ -1,0 +1,40 @@
+# Metered × OpenClaw Configuration
+#
+# This config connects an OpenClaw agent to the Metered gateway.
+# The agent pays for every AI call in USDT0 on Plasma via x402.
+# No API keys. No accounts. Just a WDK wallet.
+#
+# Setup:
+#   1. Start Metered: pnpm server (from repo root)
+#   2. Install WDK skill: npx skills add tetherto/wdk-agent-skills
+#   3. Run OpenClaw: pnpm openclaw
+#      (loads metered-plugin.js which patches fetch with x402 payment)
+
+accounts:
+  - name: metered-agent
+    # Metered acts as a fully OpenAI-compatible custom provider.
+    # x402 payment is handled transparently by the WDK skill.
+    provider: custom
+    custom_base_url: "http://localhost:4021/v1"
+
+    # The WDK skill handles x402 payment negotiation.
+    # It injects the signed USDT0 authorization into every request.
+    # Seed phrase is loaded from WALLET_SEED_PHRASE env var by the skill.
+    skills:
+      - wdk-agent-skills
+
+    # Default model — matches Metered's cheapest option
+    model: llama-3.1-8b-instant
+
+    # System prompt: agent knows it has a wallet and pays per call
+    system: |
+      You are an autonomous AI agent with a self-custodial WDK wallet on the Plasma blockchain.
+      You pay for your own inference in USDT0 via the x402 protocol — no API keys needed.
+      You can create wallets, check balances, and transfer funds using your WDK skills.
+      Be concise, autonomous, and economically aware.
+
+    # Channel: expose the agent over a local HTTP webhook
+    channels:
+      - type: webhook
+        path: /agent
+        port: 4022
