@@ -1,0 +1,25 @@
+[
+  {
+    "route": "/",
+    "firstLoadUncompressedJsBytes": 541606,
+    "firstLoadChunkPaths": [
+      ".next/static/chunks/0ojxhuijn5fo9.js",
+      ".next/static/chunks/0g8mcz1hpbka7.js",
+      ".next/static/chunks/0c-1.hqbvbucv.js",
+      ".next/static/chunks/14c_-ibm8146e.js",
+      ".next/static/chunks/0oeyymxtaoali.js",
+      ".next/static/chunks/turbopack-0vc5.zmug~m5-.js"
+    ]
+  },
+  {
+    "route": "/_not-found",
+    "firstLoadUncompressedJsBytes": 513603,
+    "firstLoadChunkPaths": [
+      ".next/static/chunks/0ojxhuijn5fo9.js",
+      ".next/static/chunks/0c-1.hqbvbucv.js",
+      ".next/static/chunks/14c_-ibm8146e.js",
+      ".next/static/chunks/0oeyymxtaoali.js",
+      ".next/static/chunks/turbopack-0vc5.zmug~m5-.js"
+    ]
+  }
+]

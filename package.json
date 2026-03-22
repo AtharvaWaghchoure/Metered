@@ -8,7 +8,9 @@
     "agent": "node agent/treasury.js",
     "client": "node client/demo.js",
     "multi-agent": "node client/multi-agent-demo.js",
-    "openclaw": "openclaw --plugin ./openclaw/metered-plugin.js --config openclaw/config.yml"
+    "openclaw": "openclaw --plugin ./openclaw/metered-plugin.js --config openclaw/config.yml",
+    "postinstall": "node patches/fix-facilitator.js",
+    "dashboard": "cd dashboard && pnpm dev"
   },
   "dependencies": {
     "@semanticio/wdk-wallet-evm-x402-facilitator": "1.0.0-beta.2",

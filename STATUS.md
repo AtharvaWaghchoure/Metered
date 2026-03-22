@@ -262,10 +262,14 @@ pnpm client
 
 ## What Remains
 
-Nothing left to code. The only outstanding item is operational:
+All code and operational verification is complete:
 
-1. Fill in `.env` with real seed phrases and `GROQ_API_KEY`
-2. Fund the client wallet with test USDC on Base Sepolia (free faucet)
-3. Run `pnpm server` + `pnpm client` and verify one real x402 payment goes through
-4. Record a demo video showing the end-to-end flow
-5. Submit on the hackathon portal
+- [x] `.env` configured with seed phrases and Groq API key
+- [x] Client wallet funded with test USDC on Base Sepolia (Circle faucet)
+- [x] End-to-end x402 payment verified — agent pays $0.0002 USDC, receives AI response
+- [ ] Record a demo video showing the end-to-end flow
+- [ ] Submit on the hackathon portal
+
+### Bug fix applied
+
+The `@semanticio/wdk-wallet-evm-x402-facilitator` has a bug in `readContract()` — it calls `contract[functionName](...args)` which in ethers v6 tries to send a transaction for non-view functions instead of doing a static call. Fixed via `patches/fix-facilitator.js` (postinstall script) which patches it to use `contract[functionName].staticCall(...args)`.

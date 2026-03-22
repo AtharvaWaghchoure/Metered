@@ -76,7 +76,7 @@ async function main() {
 
   console.log(`Model   : ${result.model}`);
   console.log(`Paid    : $${result.price_paid_usdt} USDT0`);
-  console.log(`Tokens  : ${result.usage?.input_tokens} in / ${result.usage?.output_tokens} out`);
+  console.log(`Tokens  : ${result.usage?.prompt_tokens} in / ${result.usage?.completion_tokens} out`);
   console.log(`\nResponse:\n${result.content}`);
 }
 
