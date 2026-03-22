@@ -1,0 +1,28 @@
+{
+  "name": "metered",
+  "version": "1.0.0",
+  "description": "Pay-per-call AI API gateway powered by WDK x402",
+  "type": "module",
+  "scripts": {
+    "server": "node server/index.js",
+    "agent": "node agent/treasury.js",
+    "client": "node client/demo.js",
+    "multi-agent": "node client/multi-agent-demo.js",
+    "openclaw": "openclaw --plugin ./openclaw/metered-plugin.js --config openclaw/config.yml"
+  },
+  "dependencies": {
+    "@semanticio/wdk-wallet-evm-x402-facilitator": "1.0.0-beta.2",
+    "@tetherto/wdk-protocol-bridge-usdt0-evm": "1.0.0-beta.3",
+    "@tetherto/wdk-protocol-lending-aave-evm": "1.0.0-beta.3",
+    "@tetherto/wdk-wallet-evm": "^1.0.0-beta.10",
+    "@x402/core": "^2.7.0",
+    "@x402/evm": "^2.7.0",
+    "@x402/express": "^2.7.0",
+    "@x402/fetch": "^2.7.0",
+    "dotenv": "^16.0.0",
+    "express": "^4.18.0",
+    "node-cron": "^3.0.0",
+    "openai": "^6.32.0",
+    "openclaw": "^2026.3.13"
+  }
+}
